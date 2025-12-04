@@ -85,7 +85,7 @@ The CNN also reached about 0.96 accuracy on the test set. Because it looks at lo
 
 ## Kaggle Test Evaluation
 
----
+
 
 To test the full pipeline on data outside my own train or test split, I used Kaggle `test.csv` with its matching `test_labels.csv`. I joined them on the `id` column, dropped rows with a toxic label of `-1`, cleaned the text the same way as the training data, and ran all three models.
 
@@ -101,7 +101,7 @@ Across these metrics the MLP and CNN both gave better balance on the toxic class
 
 ## Key Learnings
 
----
+
 
 - **Combining labels into one target helped define the problem clearly.** Instead of only looking at the toxic column, I combined all six harmful label columns into one overall target. This fits better with how a real moderation system might work, since a comment that is obscene or hateful is still harmful even if the toxic column by itself is 0.
 - **TF IDF with character n grams is powerful for messy text.** Using character n grams instead of full words helped the models catch toxic patterns even when users tried to hide them with creative spelling. It also reduced the impact of small changes in punctuation or casing that do not really change the meaning of the comment.
@@ -131,6 +131,5 @@ Across these metrics the MLP and CNN both gave better balance on the toxic class
 
 ## Results
 
----
 
 Overall, all three models reached high accuracy because most comments are not toxic, but the MLP and CNN gave the best balance on the toxic class itself. The CNN in particular felt the most reliable on short toxic phrases and messy spellings, while the MLP gave slightly better scores in the Kaggle classification report. Together they show that a careful text cleaning pipeline combined with modern neural models can help flag harmful online comments in a way that is both accurate and practical.
